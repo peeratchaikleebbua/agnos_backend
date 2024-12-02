@@ -39,7 +39,6 @@ export class PatientFormGateway
         clientId: client.id,
         ...patientFormMessage,
       });
-      console.log(client.id);
     } catch (error) {
       console.log('Failed to Send PatientForm Data');
     }
