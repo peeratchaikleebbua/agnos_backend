@@ -29,19 +29,19 @@ export class PatientFormGateway
 
   // Listen for incoming messages from the client
   @SubscribeMessage('patientForm:update')
-  async handleRead(
+  async handlePatientFormUpdate(
     @MessageBody() patientFormMessage: PatientFormDTO,
     @ConnectedSocket() client: Socket,
   ) {
     try {
-      // server broadcast to trigger readData
+      // server sending recent patientForm through event
       this.server.emit('patientForm:recent', {
         clientId: client.id,
         ...patientFormMessage,
       });
       console.log(client.id);
     } catch (error) {
-      console.log('Failed to Send readData');
+      console.log('Failed to Send PatientForm Data');
     }
   }
 }
